@@ -68,4 +68,4 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 
 -- Conceal Level for Obsidian Plugin
-vim.opt.conceallevel = 2
+vim.opt.conceallevel = 1
