@@ -1,16 +1,23 @@
+-- #TODO test
+-- #todo test
 return {
 	"folke/todo-comments.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = function()
 		require("todo-comments").setup({
 			keywords = {
-				TODO = { icon = " ", color = "info" },
+				TODO = { icon = " ", color = "info", alt = { "todo" } },
 			},
 			highlight = {
+				comments_only = false,
 				multiline = false,
+				pattern = { [[#<(KEYWORDS)\s*]], [[.*<(KEYWORDS)\s*:]] },
 			},
 			colors = {
 				info = { "DiagnosticsInfo", "#CE5D97" },
+			},
+			search = {
+				pattern = [[\b(KEYWORDS)\b]],
 			},
 		})
 		vim.keymap.set("n", "]t", function()
