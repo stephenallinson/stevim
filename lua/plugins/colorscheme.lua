@@ -1,12 +1,40 @@
 return {
 	{
-		dir = "/home/stephen/nvimproj/flex.nvim",
+		"navarasu/onedark.nvim",
 		lazy = false,
 		name = "onedark",
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
-				style = "dark",
+				-- HACK: Add flexoki color scheme, and see if it works out
+				colors = {
+					black = "#100F0F",
+					bg0 = "#282c34",
+					bg1 = "#31353f",
+					bg2 = "#393f4a",
+					bg3 = "#3b3f4c",
+					bg_d = "#1C1B1A",
+					bg_blue = "#205EA6",
+					bg_yellow = "#D0A215",
+					fg = "#abb2bf",
+					purple = "#8B7EC8",
+					green = "#879A39",
+					orange = "#DA702C",
+					blue = "#4385BE",
+					yellow = "#D0A215",
+					cyan = "#3AA99F",
+					red = "#D14D41",
+					grey = "#575653",
+					light_grey = "#878580",
+					dark_cyan = "#24837B",
+					dark_red = "#AF3029",
+					dark_yellow = "#AD8301",
+					dark_purple = "#5E409D",
+					diff_add = "#31392b",
+					diff_delete = "#382b2c",
+					diff_change = "#1c3448",
+					diff_text = "#2c5372",
+				},
 				transparent = true,
 				term_colors = true,
 				ending_tildes = false,
@@ -17,38 +45,4 @@ return {
 			vim.cmd.colorscheme("onedark")
 		end,
 	},
-	-- {
-	-- 	"navarasu/onedark.nvim",
-	-- 	lazy = false,
-	-- 	name = "onedark",
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("onedark").setup({
-	-- 			style = "darker",
-	-- 			transparent = true,
-	-- 			term_colors = true,
-	-- 			ending_tildes = false,
-	-- 			code_style = {
-	-- 				comments = "none",
-	-- 			},
-	-- 		})
-	-- 		vim.cmd.colorscheme("onedark")
-	-- 	end,
-	-- },
-	-- TODO: Keep up to date on this
-	-- {
-	-- 	"stephenallinson/flexoki-neovim",
-	-- 	name = "flexoki",
-	-- 	priority = 1000,
-	-- 	config = function()
-	-- 		require("flexoki").setup({
-	-- 			variant = "auto",
-	-- 			highlight_groups = {
-	-- 				base = {
-	--                        Comment = { italic = false },
-	-- 			},
-	-- 		})
-	-- 		vim.cmd.colorscheme("flexoki-dark")
-	-- 	end,
-	-- },
 }
