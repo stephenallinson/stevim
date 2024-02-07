@@ -9,11 +9,11 @@ return {
 				-- HACK: Add flexoki color scheme, and see if it works out
 				colors = {
 					black = "#100F0F",
-					bg0 = "#282c34",
+					bg0 = "#1c1b1a",
 					bg1 = "#31353f",
 					bg2 = "#393f4a",
 					bg3 = "#3b3f4c",
-					bg_d = "#1C1B1A",
+					bg_d = "#282c34",
 					bg_blue = "#205EA6",
 					bg_yellow = "#D0A215",
 					fg = "#abb2bf",
@@ -35,7 +35,7 @@ return {
 					diff_change = "#1c3448",
 					diff_text = "#2c5372",
 				},
-				transparent = true,
+				transparent = false,
 				term_colors = true,
 				ending_tildes = false,
 				code_style = {
