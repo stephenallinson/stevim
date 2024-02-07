@@ -62,6 +62,8 @@ return {
 					"beautysh",
 					"eslint_d",
 					"golangci-lint",
+					"goimports-reviser",
+					"golines",
 					"htmlbeautifier",
 					"jsonlint",
 					"luacheck",
