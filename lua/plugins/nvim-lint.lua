@@ -8,15 +8,14 @@ return {
 		"BufNewFile",
 	},
 	config = function()
-		local lint = require("lint")
-		lint.linters_by_ft = {
+		require("lint").linters_by_ft = {
 			bash = { "shellcheck" },
 			fish = { "fish" },
 			go = { "golangcilint" },
 			html = { "htmlhint" },
 			javascript = { "eslint_d" },
 			json = { "jsonlint" },
-			lua = { "luacheck" },
+			-- lua = { "luacheck" },
 			markdown = { "vale" },
 			python = { "ruff" },
 			typescript = { "eslint_d" },
@@ -28,11 +27,11 @@ return {
 		vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 			group = lint_augroup,
 			callback = function()
-				lint.try_lint()
+				require("lint").try_lint()
 			end,
 		})
 		vim.keymap.set("n", "<leader>ll", function()
-			lint.try_lint()
+			require("lint").try_lint()
 		end, { desc = "Trigger linting for current file" })
 	end,
 }

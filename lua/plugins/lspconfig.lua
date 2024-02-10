@@ -18,36 +18,18 @@ return {
 			require("mason-lspconfig").setup({
 				-- Update this list to the language servers you need installed
 				ensure_installed = {
-					"ansiblels",
-					"bashls",
-					"cssls",
-					"docker_compose_language_service",
-					"dockerls",
 					"gopls",
-					"gradle_ls",
-					"html",
-					"jsonls",
 					"lua_ls",
-					"lemminx",
-					"powershell_es",
-					"quick_lint_js",
+					"pyright",
 					"ruff_lsp",
-					"sqlls",
-					"tailwindcss",
-					"templ",
-					"terraformls",
-					"tsserver",
-					"yamlls",
 				},
+				automatic_installation = true,
 			})
-			require("mason-lspconfig").setup_handlers({
-				function(server_name)
-					require("lspconfig")[server_name].setup({})
-				end,
-				require("lspconfig").lua_ls.setup({
-					settings = { Lua = { diagnostics = { globals = { "vim" } } } },
-				}),
-			})
+			-- ["lua_ls"] = function()
+			-- 	require("lspconfig").lua_ls.setup({
+			-- 		settings = { Lua = { diagnostics = { globals = { "vim" } } } },
+			-- 	})
+			-- end,
 		end,
 	},
 	{
@@ -59,6 +41,7 @@ return {
 		config = function()
 			require("mason-tool-installer").setup({
 				ensure_installed = {
+					"black",
 					"beautysh",
 					"eslint_d",
 					"golangci-lint",
@@ -67,9 +50,10 @@ return {
 					"htmlbeautifier",
 					"jsonlint",
 					"luacheck",
+					"mypy",
 					"prettier",
 					"prettierd",
-					"ruff-lsp",
+					"ruff",
 					"shellcheck",
 					"stylua",
 					"vale",
@@ -85,16 +69,38 @@ return {
 		lazy = false,
 		dependencies = {
 			{ "j-hui/fidget.nvim", opts = {} },
-			{ "folke/neodev.nvim" },
+			{ "folke/neodev.nvim", opts = {} },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
 		},
 		config = function()
+			local lspconfig = require("lspconfig")
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Lua LSP
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+			})
+			-- Go LSP
+			lspconfig.gopls.setup({
+				capabilities = capabilities,
+			})
+			-- Python LSP
+			lspconfig.pyright.setup({
+				capabilities = capabilities,
+			})
+			local ruff_on_attach = function(client, bufnr)
+				client.server_capabilities.hoverProvider = false
+			end
+			lspconfig.ruff_lsp.setup({
+				on_attach = ruff_on_attach,
+			})
 			-- Global Keymaps
 			vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float)
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
 			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+			-- Autocmd Keymaps
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)

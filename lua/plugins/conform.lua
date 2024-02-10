@@ -14,7 +14,7 @@ return {
 				json = { { "prettierd", "prettier" } },
 				lua = { "stylua" },
 				markdown = { { "prettierd", "prettier" } },
-				python = { "ruff" },
+				python = { "ruff_format", "ruff_fix" },
 				scss = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
 				yaml = { "yamlfix" },
