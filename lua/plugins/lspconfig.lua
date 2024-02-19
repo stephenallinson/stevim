@@ -20,6 +20,7 @@ return {
 				ensure_installed = {
 					"gopls",
 					"lua_ls",
+					"marksman",
 					"pyright",
 					"ruff_lsp",
 				},
@@ -56,7 +57,6 @@ return {
 					"ruff",
 					"shellcheck",
 					"stylua",
-					"vale",
 					"yamlfix",
 					"yamllint",
 				},
@@ -76,6 +76,10 @@ return {
 		config = function()
 			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Markdown LSP
+			lspconfig.marksman.setup({
+				capabilities = capabilities,
+			})
 			-- Lua LSP
 			lspconfig.lua_ls.setup({
 				capabilities = capabilities,
