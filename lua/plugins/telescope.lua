@@ -31,7 +31,7 @@ return {
 			vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Find Files" })
 			vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Find via Grep" })
 			vim.keymap.set("n", "<leader>?", builtin.oldfiles, { desc = "Find Recent Files" })
-			vim.keymap.set("n", "<leader><space>", builtin.buffers, { desc = "Find Buffers" })
+			vim.keymap.set("n", "<leader><space>", builtin.builtin, { desc = "Open Telescope" })
 
 			-- Load extensions
 			require("telescope").load_extension("fzf")

@@ -50,7 +50,7 @@ return {
 					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = { Codeium = "" },
+					symbol_map = { Codeium = "󰘦 " },
 				}),
 			},
 			window = {
@@ -66,6 +66,10 @@ return {
 					border = "single",
 					winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
 				},
+			},
+			experimental = {
+				-- Add ghost text auto-fill information
+				ghost_text = true,
 			},
 		})
 	end,
