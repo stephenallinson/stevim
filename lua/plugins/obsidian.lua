@@ -2,12 +2,14 @@ return {
 	"epwalsh/obsidian.nvim",
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
-	event = {
-		-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-		-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-		"BufReadPre /home/stephen/Documents/JCA Personal/**.md",
-		"BufNewFile /home/stephen/Documents/JCA Personal/**.md",
-	},
+	ft = "markdown",
+	-- HACK: Try to figure out why it's not working on WSL (linking not the same as absolute path?)
+	-- event = {
+	-- 	-- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+	-- 	-- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+	-- 	"BufReadPre /home/stephen/obsidian/JCA Personal/**.md",
+	-- 	"BufNewFile /home/stephen/obsidian/JCA Personal/**.md",
+	-- },
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"hrsh7th/nvim-cmp",
