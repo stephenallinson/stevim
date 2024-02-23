@@ -1,7 +1,7 @@
 return {
 	"nvimdev/dashboard-nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
 	event = "VimEnter",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		local logo = [[
 	  ██████   █████                   █████   █████  ███                 
@@ -13,9 +13,10 @@ return {
 	  █████  ░░█████░░██████ ░░██████     ░░███      █████ █████░███ █████
 	 ░░░░░    ░░░░░  ░░░░░░   ░░░░░░       ░░░      ░░░░░ ░░░░░ ░░░ ░░░░░ 
         ]]
+		local path = vim.fn.expand("~/Documents/")
 		require("dashboard").setup({
 			theme = "hyper",
-			shortcut_type = "number",
+			shortcut_type = "letter",
 			config = {
 				header = vim.split(logo, "\n"),
 				shortcut = {
@@ -34,16 +35,23 @@ return {
 						action = "Telescope live_grep",
 						key = "a",
 					},
+					{
+						desc = " Obsidian",
+						group = "@property",
+						action = "Telescope live_grep cwd=" .. path,
+						key = "o",
+					},
 				},
 				packages = { enable = true },
-				mru = { limit = 8, icon = "  ", label = "Recent Files", cwd_only = false },
+				mru = { limit = 6, icon = "  ", label = "Recent Files", cwd_only = false },
 				project = {
 					enable = true,
-					limit = 4,
+					limit = 6,
 					icon = "  ",
 					label = "Projects",
 					action = "Telescope find_files cwd=",
 				},
+				footer = {},
 			},
 			hide = {
 				statusline = true,
