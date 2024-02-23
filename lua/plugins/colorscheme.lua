@@ -10,7 +10,7 @@ return {
 				colors = {
 					black = "#100F0F",
 					bg0 = "#1c1b1a",
-					bg1 = "#31353f",
+					bg1 = "#1c1b1a", -- this has to be the same as bg0
 					bg2 = "#393f4a",
 					bg3 = "#3b3f4c",
 					bg_d = "#282c34",
@@ -40,6 +40,11 @@ return {
 				ending_tildes = false,
 				code_style = {
 					comments = "none",
+				},
+				diagnostics = {
+					darker = true,
+					undercurl = true,
+					background = true,
 				},
 			})
 			vim.cmd.colorscheme("onedark")

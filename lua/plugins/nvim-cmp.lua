@@ -54,18 +54,8 @@ return {
 				}),
 			},
 			window = {
-				completion = {
-					border = "single",
-					winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,FloatBorder:FloatBorder,Search:None",
-					col_offset = -1,
-					side_padding = 0,
-					scrollbar = false,
-					scrolloff = 3,
-				},
-				documentation = {
-					border = "single",
-					winhighlight = "Normal:Pmenu,FloatBorder:FloatBorder,Search:None",
-				},
+				completion = cmp.config.window.bordered(),
+				documentation = cmp.config.window.bordered(),
 			},
 			experimental = {
 				-- Add ghost text auto-fill information
