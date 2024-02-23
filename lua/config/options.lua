@@ -77,3 +77,6 @@ vim.opt.breakindent = true
 
 -- Preview substitutions live, as you type!
 vim.opt.inccommand = "split"
+
+-- Allow Visual Block mode to use whitespace
+vim.opt.virtualedit = "block"

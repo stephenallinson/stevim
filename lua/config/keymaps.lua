@@ -46,6 +46,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Switch Buffer with Backspace
 vim.keymap.set("n", "<Backspace>", ":bprev<CR>")
+vim.keymap.set("n", "<S-Backspace>", ":bnext<CR>")
 
 -- Remap arrow keys to move between windows
 vim.keymap.set("n", "<up>", "<C-w><up>")
