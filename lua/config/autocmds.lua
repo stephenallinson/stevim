@@ -68,3 +68,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt_local.spell = true
 	end,
 })
+
+-- Restore cursor position
+vim.api.nvim_create_autocmd("BufReadPost", {
+	command = 'silent! normal! g`"zv',
+})

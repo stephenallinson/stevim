@@ -15,11 +15,10 @@ vim.opt.smartindent = true
 vim.opt.wrap = false
 
 -- Enable Mouse Mode
-vim.opt.mouse = 'a'
+vim.opt.mouse = "a"
 
 -- Enable the clipboard between OS and NVIM
-vim.opt.clipboard = 'unnamedplus'
-
+vim.opt.clipboard = "unnamedplus"
 
 -- Persistent undolist
 vim.opt.swapfile = false
@@ -45,19 +44,19 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 -- Set completeopt for better completion experience
-vim.opt.completeopt = 'menuone,noselect'
+vim.opt.completeopt = "menuone,noselect"
 
--- Column set to 88 for Python Ruff LSP 
--- vim.opt.colorcolumn = "88"
+-- Column set to 88 for Python Ruff LSP
+vim.opt.colorcolumn = "88"
 
 -- Highlight on Yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = "*",
 })
 
 -- Show NVIM tabs
@@ -69,3 +68,12 @@ vim.opt.splitright = true
 
 -- Conceal Level for Obsidian Plugin
 vim.opt.conceallevel = 1
+
+-- Disable showing mode in command line since it is in status bar
+vim.opt.showmode = false
+
+-- Enable break indent
+vim.opt.breakindent = true
+
+-- Preview substitutions live, as you type!
+vim.opt.inccommand = "split"
