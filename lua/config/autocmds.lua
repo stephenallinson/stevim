@@ -9,6 +9,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = vim.api.nvim_create_augroup("q_to_quit", { clear = true }),
 	pattern = {
 		"",
+		"chatgpt-input",
 		"DressingSelect",
 		"Jaq",
 		"checkhealth",
