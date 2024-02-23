@@ -17,6 +17,7 @@ return {
 				python = { "ruff_format", "ruff_fix" },
 				scss = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },
+				toml = { "taplo" },
 				yaml = { "yamlfix" },
 			},
 			format_on_save = {

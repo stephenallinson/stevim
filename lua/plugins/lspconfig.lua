@@ -18,11 +18,12 @@ return {
 			require("mason-lspconfig").setup({
 				-- Update this list to the language servers you need installed
 				ensure_installed = {
-					"gopls",
-					"lua_ls",
-					"marksman",
-					"pyright",
-					"ruff_lsp",
+					"gopls", -- Go
+					"lua_ls", -- Lua
+					"marksman", -- Markdown
+					"pyright", -- Python
+					"ruff_lsp", -- Python
+					"taplo", -- TOML
 				},
 				automatic_installation = true,
 			})
@@ -97,6 +98,10 @@ return {
 			end
 			lspconfig.ruff_lsp.setup({
 				on_attach = ruff_on_attach,
+			})
+			-- TOML LSP
+			lspconfig.taplo.setup({
+				capabilities = capabilities,
 			})
 			-- Global Keymaps
 			vim.keymap.set("n", "<leader>ee", vim.diagnostic.open_float)
