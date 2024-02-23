@@ -24,11 +24,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"query",
 		"spectre_panel",
 		"startuptime",
+		"TelescopeResults",
+		"TelescopePrompt",
 		"tsplayground",
 	},
 	callback = function()
 		vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR>
+      nnoremap <silent> <buffer> q :close!<CR>
       set nobuflisted
       ]])
 	end,
@@ -66,4 +68,3 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt_local.spell = true
 	end,
 })
-
