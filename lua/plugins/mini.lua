@@ -1,21 +1,18 @@
 return {
-    {
-        "echasnovski/mini.cursorword",
-        version = "*",
-        config = function()
-            require("mini.cursorword").setup()
-        end,
-    },
-    {
-        "echasnovski/mini.hipatterns",
-        version = "*",
-        config = function()
-            local hipatterns = require("mini.hipatterns")
-            hipatterns.setup({
-                highlighters = {
-                    hex_color = hipatterns.gen_highlighter.hex_color(),
-                },
-            })
-        end,
-    },
+	"echasnovski/mini.nvim",
+	config = function()
+		-- Mini Cursorword
+		require("mini.cursorword").setup()
+
+		-- Mini Hipatterns
+		local hipatterns = require("mini.hipatterns")
+		hipatterns.setup({
+			highlighters = {
+				hex_color = hipatterns.gen_highlighter.hex_color(),
+			},
+		})
+
+		-- Mini ai
+		require("mini.ai").setup({ n_lines = 500 })
+	end,
 }
