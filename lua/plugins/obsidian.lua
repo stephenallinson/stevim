@@ -14,6 +14,7 @@ return {
 		"epwalsh/pomo.nvim",
 	},
 	config = function()
+		vim.opt.conceallevel = 1
 		---@diagnostic disable-next-line: missing-fields
 		require("obsidian").setup({
 			workspaces = {
