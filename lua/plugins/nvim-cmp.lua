@@ -26,18 +26,25 @@ return {
 				end,
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
-				["<Tab>"] = cmp.mapping.select_next_item(), -- next suggestion
-				["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				["<S-Tab>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				["<C-u>"] = cmp.mapping.scroll_docs(-4),
-				["<C-d>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+				["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
+				["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+				["<C-y>"] = cmp.mapping.confirm({ select = true }),
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
-				["<CR>"] = cmp.mapping.confirm({ select = false }),
+				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+				["<C-l>"] = cmp.mapping(function()
+					if luasnip.expand_or_locally_jumpable() then
+						luasnip.expand_or_jump()
+					end
+				end, { "i", "s" }),
+				["<C-h>"] = cmp.mapping(function()
+					if luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					end
+				end, { "i", "s" }),
 			}),
 			sources = {
-				{ name = "codeium" },
+				{ name = "copilot" },
+				-- { name = "codeium" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
@@ -50,7 +57,7 @@ return {
 					mode = "symbol",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = { Codeium = "󰘦 " },
+					symbol_map = { Codeium = "󰘦 ", Copilot = " " },
 				}),
 			},
 			window = {
