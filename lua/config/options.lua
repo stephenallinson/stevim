@@ -2,6 +2,9 @@
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
+-- Cursor Line
+vim.opt.cursorline = true
+
 -- Tab Stop
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
