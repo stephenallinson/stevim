@@ -3,8 +3,8 @@ return {
 	version = "*", -- recommended, use latest release instead of latest commit
 	lazy = true,
 	event = {
-		"BufReadPre /home/stephen/Documents/JCA Personal/**.md",
-		"BufNewFile /home/stephen/Documents/JCA Personal/**.md",
+		"BufReadPre /home/stephen/Documents/JCA Personal/*",
+		"BufNewFile /home/stephen/Documents/JCA Personal/*",
 	},
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -68,6 +68,10 @@ return {
 					ObsidianExtLinkIcon = { fg = "#C678DD" },
 					ObsidianTag = { italic = true, fg = "#56B6C2" },
 					ObsidianHighlightText = { bg = "#E5C07B" },
+					-- Headline1 = { bold = true, fg = "#AF3029" },
+					-- Headline2 = { bold = true, fg = "#BC5215" },
+					-- Headline3 = { bold = true, fg = "#AD8301" },
+					-- Headline4 = { bold = true, fg = "#66800B" },
 				},
 			},
 			new_notes_location = "current_dir",

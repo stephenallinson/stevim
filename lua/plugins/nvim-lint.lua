@@ -16,7 +16,7 @@ return {
 			javascript = { "eslint_d" },
 			json = { "jsonlint" },
 			-- lua = { "luacheck" },
-			-- markdown = { "vale" },
+			-- markdown = { "cspell" },
 			python = { "ruff" },
 			typescript = { "eslint_d" },
 			yaml = { "yamllint" },

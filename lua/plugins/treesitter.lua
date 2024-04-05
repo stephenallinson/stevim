@@ -19,15 +19,6 @@ return {
 				"markdown",
 				"markdown_inline",
 			},
-			incremental_selection = {
-				enable = true,
-				keymaps = {
-					init_selection = "<C-a>",
-					node_incremental = "<C-a>",
-					scope_incremental = false,
-					node_decremental = "<C-A>",
-				},
-			},
 			auto_install = true,
 			highlight = { enable = true },
 			indent = { enable = true },

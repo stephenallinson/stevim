@@ -37,6 +37,10 @@ return {
 				},
 				highlights = {
 					CursorLine = { bg = "#282726" },
+					["@markup.heading.1.markdown"] = { fg = "$red" },
+					["@markup.heading.2.markdown"] = { fg = "$orange" },
+					["@markup.heading.3.markdown"] = { fg = "$yellow" },
+					["@markup.heading.4.markdown"] = { fg = "$green" },
 				},
 				transparent = false,
 				term_colors = true,
