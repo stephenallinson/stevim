@@ -6,14 +6,14 @@ return {
 		priority = 1000,
 		config = function()
 			require("onedark").setup({
-				-- HACK: Add flexoki color scheme, and see if it works out
+				-- INFO: https://stephango.com/flexoki colorscheme
 				colors = {
 					black = "#100F0F",
-					bg0 = "#1c1b1a",
-					bg1 = "#1c1b1a", -- this has to be the same as bg0
+					bg0 = "#1C1B1A",
+					bg1 = "#31353f",
 					bg2 = "#393f4a",
 					bg3 = "#3b3f4c",
-					bg_d = "#282c34",
+					bg_d = "#21252b",
 					bg_blue = "#205EA6",
 					bg_yellow = "#D0A215",
 					fg = "#abb2bf",

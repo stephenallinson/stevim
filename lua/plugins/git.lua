@@ -29,9 +29,6 @@ return {
 		end,
 	},
 	{
-		"tpope/vim-fugitive",
-	},
-	{
 		"kdheepak/lazygit.nvim",
 		opts = {},
 		config = function()
