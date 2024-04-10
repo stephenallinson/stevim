@@ -87,6 +87,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
+-- Save markdown periodically
+vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
+	group = vim.api.nvim_create_augroup("markdown_autosave", { clear = true }),
+	pattern = { "markdown", "*.md" },
+	callback = function()
+		if vim.bo.modified and not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+			vim.api.nvim_command("silent update")
+		end
+	end,
+})
+
 -- Restore cursor position
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = vim.api.nvim_create_augroup("cursor_position", { clear = true }),
