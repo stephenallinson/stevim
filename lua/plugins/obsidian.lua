@@ -14,7 +14,6 @@ return {
 		"epwalsh/pomo.nvim",
 	},
 	config = function()
-		vim.opt.conceallevel = 1
 		---@diagnostic disable-next-line: missing-fields
 		require("obsidian").setup({
 			workspaces = {
@@ -53,7 +52,7 @@ return {
 					["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
 				},
 				bullets = { char = "•", hl_group = "ObsidianBullet" },
-				external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
+				external_link_icon = { char = "", hl_group = "ObsidianExtLinkIcon" },
 				reference_text = { hl_group = "ObsidianRefText" },
 				highlight_text = { hl_group = "ObsidianHighlightText" },
 				tags = { hl_group = "ObsidianTag" },
@@ -65,8 +64,9 @@ return {
 					ObsidianTilde = { bold = true, fg = "#E06C75" },
 					ObsidianBullet = { bold = true, fg = "#61AFEF" },
 					ObsidianRefText = { underline = true, fg = "#C678DD" },
-					ObsidianExtLinkIcon = { fg = "#C678DD" },
+					ObsidianExtLinkIcon = { underline = true, fg = "#C678DD" },
 					ObsidianTag = { italic = true, fg = "#56B6C2" },
+					ObsidianBlockID = { italic = true, fg = "#56B6C2" },
 					ObsidianHighlightText = { bg = "#E5C07B" },
 					-- Headline1 = { bold = true, fg = "#AF3029" },
 					-- Headline2 = { bold = true, fg = "#BC5215" },
@@ -99,6 +99,7 @@ return {
 					return string.format("![%s](%s)", display_name, link_path)
 				end,
 			},
+			disable_frontmatter = true,
 		})
 		-- Keymaps
 		vim.keymap.set("n", "<leader>of", ":ObsidianSearch<CR>", { desc = "[O]bsidian - [F]ind Files" })

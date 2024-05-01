@@ -13,7 +13,7 @@ return {
 				javascript = { { "prettierd", "prettier" } },
 				json = { { "prettierd", "prettier" } },
 				lua = { "stylua" },
-				markdown = { { "prettierd", "prettier" } },
+				-- markdown = { { "prettierd", "prettier" } },
 				python = { "ruff_format", "ruff_fix" },
 				scss = { { "prettierd", "prettier" } },
 				typescript = { { "prettierd", "prettier" } },

@@ -83,6 +83,3 @@ vim.opt.inccommand = "split"
 
 -- Allow Visual Block mode to use whitespace
 vim.opt.virtualedit = "block"
-
--- Auto change directory in neovim to match buffer
-vim.opt.autochdir = true

@@ -78,12 +78,15 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 	end,
 })
 
+-- Enable markdown functionality that we don't want when coding
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	group = vim.api.nvim_create_augroup("markdown_format", { clear = true }),
 	pattern = { "gitcommit", "markdown", "NeogitCommitMessage" },
 	callback = function()
+		vim.opt.conceallevel = 2
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
+		vim.opt.colorcolumn = ""
 		vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest, { desc = "Spell suggest" })
 	end,
 })

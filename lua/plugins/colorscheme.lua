@@ -37,6 +37,7 @@ return {
 				},
 				highlights = {
 					CursorLine = { bg = "#282726" },
+					Conceal = { bg = "$bg0" },
 					["@markup.heading.1.markdown"] = { fg = "$red" },
 					["@markup.heading.2.markdown"] = { fg = "$orange" },
 					["@markup.heading.3.markdown"] = { fg = "$yellow" },
