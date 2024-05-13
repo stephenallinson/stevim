@@ -3,6 +3,7 @@ return {
 	config = function()
 		require("zen-mode").setup({
 			window = {
+				backdrop = 0.35,
 				width = 0.95,
 				height = 1,
 				options = {
