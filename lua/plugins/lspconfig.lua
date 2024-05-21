@@ -18,6 +18,9 @@ return {
 			require("mason-lspconfig").setup({
 				-- Update this list to the language servers you need installed
 				ensure_installed = {
+					"bashls", -- BASH
+					"docker_compose_language_service", -- Docker Compose
+					"dockerls", -- Dockerfile
 					"gopls", -- Go
 					"lua_ls", -- Lua
 					"marksman", -- Markdown
@@ -102,6 +105,18 @@ return {
 			-- TOML LSP
 			lspconfig.taplo.setup({
 				capabilities = capabilities,
+			})
+			-- BASH LSP
+			lspconfig.bashls.setup({
+				capabilities = capabilities,
+			})
+			-- Docker LSP
+			lspconfig.docker_compose_language_service.setup({
+				capabilities = capabilities,
+			})
+			lspconfig.dockerls.setup({
+				capabilities = capabilities,
+				settings = { docker = { languageserver = { formatter = { ignoreMultilineInstructions = true } } } },
 			})
 			-- Global Keymaps
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)

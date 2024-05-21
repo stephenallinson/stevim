@@ -5,7 +5,9 @@ return {
 	config = function()
 		require("conform").setup({
 			formatters_by_ft = {
-				bash = { "beautysh" },
+				-- TODO: find a replacement for beautsh as it is incompatibel with Python 3.12
+				-- sh = { "beautysh" },
+				-- bash = { "beautysh" },
 				css = { { "prettierd", "prettier" } },
 				fish = { "fish_indent" },
 				go = { "goimports-reviser", "golines", "gofmt" },
