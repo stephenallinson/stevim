@@ -6,25 +6,10 @@ return {
 			position = "bottom",
 			height = 10,
 		})
-		-- Keymaps
-		local trouble = require("trouble")
-		vim.keymap.set("n", "<leader>qx", function()
-			trouble.toggle()
-		end)
-		vim.keymap.set("n", "gR", function()
-			trouble.toggle("lsp_references")
-		end)
-
-		-- Telescope Configuration
-		local telescope_trouble = require("trouble.providers.telescope")
-		local telescope = require("telescope")
-		telescope.setup({
-			defaults = {
-				mappings = {
-					i = { ["<C-t>"] = telescope_trouble.open_with_trouble },
-					n = { ["<C-t>"] = telescope_trouble.open_with_trouble },
-				},
-			},
-		})
+		-- Trouble Keymaps
+		vim.keymap.set("n", "<leader>xx", "<cmd>Trouble diagnostics toggle focus=true<CR>")
+		vim.keymap.set("n", "<leader>xq", "<cmd>Trouble quickfix toggle focus=true<CR>")
+		vim.keymap.set("n", "<leader>xl", "<cmd>Trouble loclist toggle focus=true<CR>")
+		vim.keymap.set("n", "<leader>xR", "<cmd>Trouble lsp_references toggle focus=true<CR>")
 	end,
 }
