@@ -36,6 +36,7 @@ return {
 					diff_text = "#2c5372",
 				},
 				highlights = {
+					ColorColumn = { bg = "#282726" },
 					CursorLine = { bg = "#282726" },
 					Conceal = { bg = "$bg0" },
 					["@markup.heading.1.markdown"] = { fg = "$red" },
