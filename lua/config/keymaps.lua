@@ -68,7 +68,7 @@ vim.keymap.set("v", "<F11>", ">gv")
 vim.keymap.set("n", "U", "<C-r>")
 
 -- Select All in Normal Mode
-vim.keymap.set("n", "<leader>A", "ggVG")
+vim.keymap.set("n", "<C-a>", "ggVG")
 
 -- Better indenting in Visual mode
 vim.keymap.set("v", "<", "<gv")
