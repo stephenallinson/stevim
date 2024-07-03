@@ -28,19 +28,13 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
 				["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-y>"] = cmp.mapping(function(fallback)
-					local copilot = require("copilot.suggestion")
-					if copilot.is_visible() then
-						copilot.accept()
-					elseif cmp.visible() then
-						cmp.confirm({
-							select = true,
-						})
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
+				["<C-y>"] = cmp.mapping(
+					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Insert,
+						select = true,
+					}),
+					{ "i", "c" }
+				),
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
 				["<C-l>"] = cmp.mapping(function()
@@ -55,8 +49,6 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = {
-				-- { name = "copilot" },
-				-- { name = "codeium" },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
