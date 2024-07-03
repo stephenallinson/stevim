@@ -1,8 +1,5 @@
 return {
 	"mfussenegger/nvim-lint",
-	dependencies = {
-		"folke/neodev.nvim",
-	},
 	event = {
 		"BufReadPre",
 		"BufNewFile",
