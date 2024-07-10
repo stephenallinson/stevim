@@ -127,3 +127,30 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt_local.conceallevel = 0
 	end,
 })
+
+-- Set built-in terminal settings
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("terminal_settings", { clear = true }),
+	callback = function()
+		local set = vim.opt_local
+		set.number = false
+		set.relativenumber = false
+		set.scrolloff = 0
+		set.modified = false
+		vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+	end,
+})
+
+-- Kill terminal buffers when quitting writing all buffers and quitting
+vim.api.nvim_create_autocmd("QuitPre", {
+	group = vim.api.nvim_create_augroup("CloseTermOnQuit", { clear = true }),
+	pattern = "*",
+	callback = function()
+		for _, buffer in ipairs(vim.api.nvim_list_bufs()) do
+			if vim.bo[buffer].buftype == "terminal" then
+				vim.cmd("bd! " .. buffer)
+			end
+		end
+	end,
+})
