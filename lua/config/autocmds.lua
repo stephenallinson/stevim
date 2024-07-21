@@ -23,6 +23,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		"neotest-summary",
 		"netrw",
 		"notify",
+		"oil",
 		"qf",
 		"query",
 		"spectre_panel",
