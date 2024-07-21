@@ -27,8 +27,7 @@ return {
 				},
 				{
 					name = "ChatGPT3-5",
-					chat = false,
-					command = false,
+					disable = true,
 				},
 			},
 			chat_topic_gen_model = "gpt-4o",
