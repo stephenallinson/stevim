@@ -30,6 +30,7 @@ return {
 	},
 	{
 		"kdheepak/lazygit.nvim",
+		event = "VeryLazy",
 		opts = {},
 		config = function()
 			vim.keymap.set("n", "<leader>gg", "<cmd>LazyGit<CR>", { desc = "Open Lazygit" })
