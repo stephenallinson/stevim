@@ -48,6 +48,7 @@ return {
 				ensure_installed = {
 					"black",
 					"beautysh",
+					"delve",
 					"eslint_d",
 					"golangci-lint",
 					"goimports-reviser",
@@ -67,6 +68,18 @@ return {
 				auto_update = true,
 			})
 		end,
+	},
+	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = { "williamboman/mason.nvim" },
+		cmd = { "DapInstall", "DapUninstall" },
+		opts = {
+			automatic_installation = true,
+			handlers = {},
+			ensure_installed = {
+				"delve",
+			},
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
