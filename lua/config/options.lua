@@ -5,6 +5,9 @@ vim.opt.relativenumber = true
 -- Cursor Line
 vim.opt.cursorline = true
 
+-- Set shell
+vim.opt.shell = "/bin/sh"
+
 -- Tab Stop
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
