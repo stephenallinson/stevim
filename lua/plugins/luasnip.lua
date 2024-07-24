@@ -21,22 +21,22 @@ return {
 			end
 		end, { silent = true })
 
-		-- Example snippet
-		-- https://www.youtube.com/watch?v=FmHhonPjvvA
-		ls.add_snippets("lua", {
-			s(
-				"hello", -- Snippet short name
-				-- fmt(string inside [[ ]] block)
-				-- {} to indicate position to insert
-				-- Define table for replacement after string {i(n), "prefilled text"}
-				fmt(
-					[[
-                print("hello {} world")
-                ]],
-					{ i(1, "default") }
-				)
-			),
-		})
+		-- -- Example snippet
+		-- -- https://www.youtube.com/watch?v=FmHhonPjvvA
+		-- ls.add_snippets("lua", {
+		-- 	s(
+		-- 		"hello", -- Snippet short name
+		-- 		-- fmt(string inside [[ ]] block)
+		-- 		-- {} to indicate position to insert
+		-- 		-- Define table for replacement after string {i(n), "prefilled text"}
+		-- 		fmt(
+		-- 			[[
+		--               print("hello {} world")
+		--               ]],
+		-- 			{ i(1, "default") }
+		-- 		)
+		-- 	),
+		-- })
 
 		-- Go Snippets
 		ls.add_snippets("go", {

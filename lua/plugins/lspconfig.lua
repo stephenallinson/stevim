@@ -27,6 +27,7 @@ return {
 					"pyright", -- Python
 					"ruff_lsp", -- Python
 					"taplo", -- TOML
+					"powershell_es", -- Powershell
 				},
 				automatic_installation = true,
 			})
@@ -130,6 +131,10 @@ return {
 			lspconfig.dockerls.setup({
 				capabilities = capabilities,
 				settings = { docker = { languageserver = { formatter = { ignoreMultilineInstructions = true } } } },
+			})
+			-- Powershell LSP
+			lspconfig.powershell_es.setup({
+				capabilities = capabilities,
 			})
 			-- Global Keymaps
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
