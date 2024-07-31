@@ -5,27 +5,23 @@ return {
 		ft = "markdown",
 		event = "VeryLazy",
 		config = function()
-			vim.g.vim_markdown_folding_disabled = 1
-			vim.g.vim_markdown_toc_autofit = 1
-			vim.g.vim_markdown_follow_anchor = 1
+			vim.g.vim_markdown_auto_insert_bullets = 0
+			vim.g.vim_markdown_borderless_table = 1
 			vim.g.vim_markdown_conceal = 1
 			vim.g.vim_markdown_conceal_code_blocks = 1
-			vim.g.vim_markdown_math = 1
-			vim.g.vim_markdown_frontmatter = 1
-			vim.g.vim_markdown_strikethrough = 1
-			vim.g.vim_markdown_new_list_item_indent = 4
 			vim.g.vim_markdown_edit_url_in = "tab"
+			vim.g.vim_markdown_folding_disabled = 1
+			vim.g.vim_markdown_follow_anchor = 1
+			vim.g.vim_markdown_frontmatter = 1
+			vim.g.vim_markdown_math = 1
+			vim.g.vim_markdown_new_list_item_indent = 0
+			vim.g.vim_markdown_strikethrough = 1
+			vim.g.vim_markdown_toc_autofit = 1
 
 			vim.g.tex_conceal = ""
 
-			vim.api.nvim_create_augroup("Markdown", { clear = true })
-			vim.api.nvim_create_autocmd("Filetype", {
-				group = "Markdown",
-				pattern = { "markdown" },
-				callback = function()
-					vim.keymap.set("x", "<C-Enter>", ":<C-U>TableFormat<CR>", { silent = true })
-				end,
-			})
+			-- Amazing Keymap found here: https://heitorpb.github.io/bla/format-tables-in-vim/
+			vim.keymap.set("x", "<leader>f", ":! tr -s \" \" | column -t -s '|' -o '|'<CR>", { silent = true })
 		end,
 	},
 	-- {
