@@ -11,6 +11,12 @@ return {
 		"hrsh7th/cmp-path", -- source for file system paths in commands
 		"zbirenbaum/copilot-cmp",
 		"onsails/lspkind.nvim",
+		{
+			"MattiasMTS/cmp-dbee",
+			dependencies = { "kndndrj/nvim-dbee" },
+			ft = "sql",
+			opts = {},
+		},
 	},
 	config = function()
 		local cmp = require("cmp")
@@ -53,6 +59,7 @@ return {
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "path" },
+				{ name = "cmp-dbee" },
 			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
