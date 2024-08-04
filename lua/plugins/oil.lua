@@ -14,14 +14,12 @@ return {
 				show_hidden = false,
 			},
 			watch_for_changes = true,
-			preview = {
-				max_width = { 100, 0.8 },
-				min_width = { 40, 0.4 },
-				max_height = 0.8,
-				min_height = 0.1,
-				update_on_cursor_moved = true,
+			float = {
+				padding = 0,
+				max_width = 60,
+				max_height = 16,
 			},
-			vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open in Oil" }),
+			vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open in Oil" }),
 		})
 	end,
 }
