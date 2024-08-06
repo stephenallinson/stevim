@@ -7,12 +7,13 @@ return {
 
 			agents = {
 				{
-					name = "ChatGPT4o",
+					provider = "openai",
+					name = "ChatGPT4o-mini",
 					chat = true,
 					command = false,
 					model = {
-						model = "gpt-4o",
-						temperature = 1.0,
+						model = "gpt-4o-mini",
+						temperature = 1.1,
 						top_p = 1.0,
 					},
 					system_prompt = "You are a general AI assistant.\n\n"
@@ -26,11 +27,15 @@ return {
 						.. "- Take a deep breath; You've got this!\n",
 				},
 				{
+					name = "ChatGPT4o",
+					disable = true,
+				},
+				{
 					name = "ChatGPT3-5",
 					disable = true,
 				},
 			},
-			chat_topic_gen_model = "gpt-4o",
+			chat_topic_gen_model = "gpt-4o-mini",
 
 			-- Keymap Settings
 			vim.keymap.set("n", "<leader>gp", ":GpChatToggle vsplit<CR>"),
