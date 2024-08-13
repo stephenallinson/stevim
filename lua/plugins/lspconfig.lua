@@ -135,6 +135,10 @@ return {
 			-- Powershell LSP
 			lspconfig.powershell_es.setup({
 				capabilities = capabilities,
+				on_attach = function(client, bufnr)
+					vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
+				end,
+				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
 			})
 			-- Global Keymaps
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
