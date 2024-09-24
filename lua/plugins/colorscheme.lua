@@ -39,6 +39,8 @@ return {
 					ColorColumn = { bg = "#282726" },
 					CursorLine = { bg = "#282726" },
 					Conceal = { bg = "$bg0" },
+					NormalFloat = { bg = "$bg0" },
+					FloatBorder = { bg = "$bg0", fg = "$blue" },
 					["@markup.heading.1.markdown"] = { fg = "$red" },
 					["@markup.heading.2.markdown"] = { fg = "$orange" },
 					["@markup.heading.3.markdown"] = { fg = "$yellow" },
