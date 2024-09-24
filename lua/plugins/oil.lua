@@ -15,9 +15,8 @@ return {
 			},
 			watch_for_changes = true,
 			float = {
-				padding = 0,
+				max_height = 20,
 				max_width = 60,
-				max_height = 16,
 			},
 			vim.keymap.set("n", "<leader>e", "<CMD>Oil --float<CR>", { desc = "Open in Oil" }),
 		})
