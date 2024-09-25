@@ -43,7 +43,7 @@ return {
 				min_chars = 2,
 			},
 			ui = {
-				enable = true,
+				enable = false,
 				update_debounce = 200,
 				checkboxes = {
 					[" "] = { char = "󰄱", hl_group = "ObsidianTodo" },

@@ -8,4 +8,4 @@ TODO:
 - [ ] Fix WhichKey mappings
 - [ ] Improve mappings for Telescope
 - [ ] Integrate Trouble and TodoComments?
-- [ ] Make it look better (dressing.nvim?)
+- [x] Make it look better (dressing.nvim?)

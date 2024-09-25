@@ -25,72 +25,51 @@ return {
 		end,
 	},
 	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		"MeanderingProgrammer/render-markdown.nvim",
 		ft = "markdown",
-		event = "VeryLazy",
 		config = function()
-			vim.schedule(function()
-				local hl = require("headlines")
-				hl.setup({
-					markdown = {
-						query = vim.treesitter.query.parse(
-							"markdown",
-							[[
-                     (atx_heading [
-                       (atx_h1_marker)
-                       (atx_h2_marker)
-                       (atx_h3_marker)
-                       (atx_h4_marker)
-                       (atx_h5_marker)
-                       (atx_h6_marker)
-                     ] @headline)
-
-                     (thematic_break) @dash
-
-                     (fenced_code_block) @codeblock
-
-                     (block_quote_marker) @quote
-                     (block_quote (paragraph (inline (block_continuation) @quote)))
-                   ]]
-						),
-						headline_highlights = {
-							"Headline1",
-							"Headline2",
-							"Headline3",
-							"Headline4",
-							"Headline5",
-							"Headline6",
+			require("render-markdown").setup({
+				render_modes = { "n", "c" },
+				anti_conceal = { enabled = true },
+				heading = {
+					position = "inline",
+					width = "block",
+					min_width = 80,
+					sign = false,
+					icons = { "󰝤" },
+				},
+				bullet = {
+					highlight = "RenderMarkdownError",
+				},
+				quote = {
+					enabled = true,
+					icon = "▋",
+					highlight = "RenderMarkdownInfo",
+				},
+				checkbox = {
+					checked = { icon = "✔ " },
+				},
+				code = {
+					enabled = true,
+					sign = false,
+					width = "block",
+					min_width = 80,
+					left_pad = 2,
+					right_pad = 4,
+				},
+				pipe_table = {
+					preset = "heavy",
+					head = "RenderMarkdownTableRow",
+					min_width = 12,
+				},
+				overrides = {
+					buftype = {
+						nofile = {
+							code = { left_pad = 0, right_pad = 0 },
 						},
-						codeblock_highlight = "CodeBlock",
-						dash_highlight = "Dash",
-						dash_string = "-",
-						quote_highlight = "Quote",
-						quote_string = "┃",
-						fat_headlines = false,
-						fat_headline_upper_string = "",
-						fat_headline_lower_string = "",
 					},
-				})
-				local md = hl.config.markdown
-				hl.refresh()
-
-				-- Toggle markdown headlines on insert enter/leave
-				vim.api.nvim_create_autocmd({ "InsertEnter", "InsertLeave" }, {
-					callback = function(data)
-						if vim.bo.filetype == "markdown" then
-							hl.config.markdown = data.event == "InsertLeave" and md or nil
-							hl.refresh()
-						end
-					end,
-				})
-			end)
-			vim.api.nvim_set_hl(0, "Headline2", { fg = "#c99076", bg = "#66493c", italic = false })
-			vim.api.nvim_set_hl(0, "Headline3", { fg = "#80a665", bg = "#3d4f2f", italic = false })
-			vim.api.nvim_set_hl(0, "Headline4", { fg = "#4c9a91", bg = "#224541", italic = false })
-			vim.api.nvim_set_hl(0, "Headline5", { fg = "#6893bf", bg = "#2b3d4f", italic = false })
-			vim.api.nvim_set_hl(0, "Headline6", { fg = "#d3869b", bg = "#6b454f", italic = false })
-			vim.api.nvim_set_hl(0, "CodeBlock", { bg = "#444444" })
+				},
+			})
 		end,
 	},
 }
