@@ -2,8 +2,7 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		"L3MON4D3/LuaSnip",
-		"saadparwaiz1/cmp_luasnip",
+		"garymjr/nvim-snippets",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-path",
 		"rafamadriz/friendly-snippets",
@@ -18,19 +17,36 @@ return {
 			opts = {},
 		},
 	},
+	keys = {
+		{
+			"<Tab>",
+			function()
+				return vim.snippet.active({ direction = 1 }) and "<cmd>lua vim.snippet.jump(1)<cr>" or "<Tab>"
+			end,
+			expr = true,
+			silent = true,
+			mode = { "i", "s" },
+		},
+		{
+			"<S-Tab>",
+			function()
+				return vim.snippet.active({ direction = -1 }) and "<cmd>lua vim.snippet.jump(-1)<cr>" or "<S-Tab>"
+			end,
+			expr = true,
+			silent = true,
+			mode = { "i", "s" },
+		},
+	},
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
 
 		vim.opt.completeopt = "menu,menuone,noselect"
 
 		cmp.setup({
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
-				end,
-			},
+			expand = function(args)
+				vim.snippet.expand(args.body)
+			end,
 			mapping = cmp.mapping.preset.insert({
 				["<C-n>"] = cmp.mapping.select_next_item(), -- next suggestion
 				["<C-p>"] = cmp.mapping.select_prev_item(), -- previous suggestion
@@ -43,23 +59,13 @@ return {
 				),
 				["<C-e>"] = cmp.mapping.abort(), -- close completion window
 				["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-				["<C-l>"] = cmp.mapping(function()
-					if luasnip.expand_or_locally_jumpable() then
-						luasnip.expand_or_jump()
-					end
-				end, { "i", "s" }),
-				["<C-h>"] = cmp.mapping(function()
-					if luasnip.locally_jumpable(-1) then
-						luasnip.jump(-1)
-					end
-				end, { "i", "s" }),
 			}),
 			sources = {
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "buffer" },
+				{ name = "snippets" },
 				{ name = "path" },
 				{ name = "cmp-dbee" },
+				{ name = "buffer" },
 			},
 			formatting = {
 				fields = { "kind", "abbr", "menu" },
