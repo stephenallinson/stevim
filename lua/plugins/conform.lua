@@ -16,7 +16,7 @@ return {
 				json = { "prettierd", "prettier" },
 				lua = { "stylua" },
 				-- markdown = { { "prettierd", "prettier" } },
-				python = { "ruff_format", "ruff_fix" },
+				python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
 				scss = { "prettierd", "prettier" },
 				typescript = { "prettierd", "prettier" },
 				toml = { "taplo" },

@@ -109,6 +109,18 @@ return {
 			-- Python LSP
 			lspconfig.pyright.setup({
 				capabilities = capabilities,
+				settings = {
+					pyright = {
+						-- Disable pyright organizer in favour of ruff
+						disableOrganizeImports = true,
+					},
+					python = {
+						analysis = {
+							-- Ignore all file analysis in favour of ruff
+							ignore = { "*" },
+						},
+					},
+				},
 			})
 			local ruff_on_attach = function(client, bufnr)
 				client.server_capabilities.hoverProvider = false
@@ -135,7 +147,7 @@ return {
 			-- Powershell LSP
 			lspconfig.powershell_es.setup({
 				capabilities = capabilities,
-				on_attach = function(client, bufnr)
+				on_attach = function(_, bufnr)
 					vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 				end,
 				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
