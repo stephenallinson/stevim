@@ -24,10 +24,10 @@ return {
 					"gopls", -- Go
 					"lua_ls", -- Lua
 					"marksman", -- Markdown
+					"powershell_es", -- Powershell
 					"pyright", -- Python
 					"ruff_lsp", -- Python
 					"taplo", -- TOML
-					"powershell_es", -- Powershell
 				},
 				automatic_installation = true,
 			})
@@ -51,10 +51,14 @@ return {
 					"beautysh",
 					"delve",
 					"eslint_d",
+					"gofumpt", -- Go
 					"golangci-lint",
 					"goimports-reviser",
+					"goimports", -- Go
 					"golines",
+					"gomodifytags", -- Go
 					"htmlbeautifier",
+					"impl", -- Go
 					"jsonlint",
 					"luacheck",
 					"mypy",
@@ -103,8 +107,66 @@ return {
 				capabilities = capabilities,
 			})
 			-- Go LSP
+			local gopls_on_attach = function(client, _)
+				-- Folke Fix for gopls not supporting semanticTokensProvider
+				-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
+				if not client.server_capabilities.semanticTokensProvider then
+					local semantic = client.config.capabilities.textDocument.semanticTokens
+					client.server_capabilities.semanticTokenProvider = {
+						full = true,
+						legend = {
+							tokenTypes = semantic.tokenTypes,
+							tokenModifiers = semantic.tokenModifiers,
+						},
+						range = true,
+					}
+				end
+			end
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
+				settings = {
+					gopls = {
+						gofumpt = true,
+						codelenses = {
+							gc_details = false,
+							generate = true,
+							regenerate_cgo = true,
+							run_govulncheck = true,
+							test = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						hints = {
+							assignVariableTypes = true,
+							compositeLiteralFields = true,
+							compositeLiteralTypes = true,
+							constantValues = true,
+							functionTypeParameters = true,
+							parameterNames = true,
+							rangeVariableTypes = true,
+						},
+						analyses = {
+							fieldalignment = true,
+							nilness = true,
+							unusedparams = true,
+							unusedwrite = true,
+							useany = true,
+						},
+						usePlaceholders = true,
+						completeUnimported = true,
+						staticcheck = true,
+						directoryFilters = {
+							"-.git",
+							"-.vscode",
+							"-.idea",
+							"-.vscode-test",
+							"-node_modules",
+						},
+						semanticTokens = true,
+					},
+				},
+				on_attach = gopls_on_attach,
 			})
 			-- Python LSP
 			lspconfig.pyright.setup({
@@ -122,7 +184,7 @@ return {
 					},
 				},
 			})
-			local ruff_on_attach = function(client, bufnr)
+			local ruff_on_attach = function(client, _)
 				client.server_capabilities.hoverProvider = false
 			end
 			lspconfig.ruff_lsp.setup({

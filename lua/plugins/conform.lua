@@ -10,7 +10,7 @@ return {
 				-- bash = { "beautysh" },
 				css = { "prettierd", "prettier" },
 				fish = { "fish_indent" },
-				go = { "goimports-reviser", "golines", "gofmt" },
+				go = { "goimports-reviser", "golines", "gofmt", "gofumpt" },
 				html = { "htmlbeautifier" },
 				javascript = { "prettierd", "prettier" },
 				json = { "prettierd", "prettier" },
