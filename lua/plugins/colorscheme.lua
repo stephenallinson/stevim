@@ -1,9 +1,15 @@
 return {
+	-- {
+	-- 	"folke/tokyonight.nvim",
+	-- 	lazy = false,
+	-- 	priority = 1000,
+	-- 	opts = {},
+	-- },
 	{
 		"navarasu/onedark.nvim",
 		lazy = false,
-		name = "onedark",
 		priority = 1000,
+		name = "onedark",
 		config = function()
 			require("onedark").setup({
 				-- INFO: https://stephango.com/flexoki colorscheme
@@ -52,6 +58,13 @@ return {
 					RenderMarkdownH4Bg = { bg = "$bg_d" },
 					RenderMarkdownH5Bg = { bg = "$bg_d" },
 					RenderMarkdownH6Bg = { bg = "$bg_d" },
+					Pmenu = { bg = "$bg0" },
+					PmenuSel = { bg = "$bg1", fg = "$cyan" },
+					-- BlinkCmpMenu = { bg = "$bg0" },
+					-- BlinkCmpMenuBorder = { bg = "$bg0" },
+					-- BlinkCmpSignatureHelp = { bg = "$bg0" },
+					-- BlinkCmpSignatureHelpBorder = { bg = "$bg0" },
+					-- BlinkCmpSignatureHelpActiveParameter = { bg = "$bg0" },
 				},
 				transparent = false,
 				term_colors = true,
