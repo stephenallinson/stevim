@@ -89,7 +89,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.opt_local.spell = true
 		vim.opt.colorcolumn = ""
 		vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest, { desc = "Spell suggest" })
-		require("cmp").setup({ enabled = false }) -- Disable cmp for Markdown
+		-- require("cmp").setup({ enabled = false }) -- Disable cmp for Markdown
 	end,
 })
 
