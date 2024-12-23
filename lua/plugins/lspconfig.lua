@@ -26,7 +26,7 @@ return {
 					"marksman", -- Markdown
 					"powershell_es", -- Powershell
 					"pyright", -- Python
-					"ruff_lsp", -- Python
+					"ruff", -- Python
 					"taplo", -- TOML
 				},
 				automatic_installation = true,
@@ -94,10 +94,13 @@ return {
 			{ "folke/neodev.nvim", opts = {} },
 			{ "williamboman/mason.nvim" },
 			{ "williamboman/mason-lspconfig.nvim" },
+			{ "saghen/blink.cmp" },
 		},
 		config = function()
 			local lspconfig = require("lspconfig")
-			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			-- Set the capabilities (either CMP, or Blink)
+			-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
 			-- Markdown LSP
 			lspconfig.marksman.setup({
 				capabilities = capabilities,
@@ -107,66 +110,31 @@ return {
 				capabilities = capabilities,
 			})
 			-- Go LSP
-			local gopls_on_attach = function(client, _)
-				-- Folke Fix for gopls not supporting semanticTokensProvider
-				-- https://github.com/golang/go/issues/54531#issuecomment-1464982242
-				if not client.server_capabilities.semanticTokensProvider then
-					local semantic = client.config.capabilities.textDocument.semanticTokens
-					client.server_capabilities.semanticTokenProvider = {
-						full = true,
-						legend = {
-							tokenTypes = semantic.tokenTypes,
-							tokenModifiers = semantic.tokenModifiers,
-						},
-						range = true,
-					}
-				end
-			end
 			lspconfig.gopls.setup({
 				capabilities = capabilities,
 				settings = {
 					gopls = {
-						gofumpt = true,
+						analyses = {
+							unusedparams = true,
+							unusedvariable = true,
+						},
 						codelenses = {
-							gc_details = false,
-							generate = true,
-							regenerate_cgo = true,
-							run_govulncheck = true,
-							test = true,
 							tidy = true,
 							upgrade_dependency = true,
-							vendor = true,
+							vulncheck = true,
 						},
 						hints = {
 							assignVariableTypes = true,
-							compositeLiteralFields = true,
-							compositeLiteralTypes = true,
 							constantValues = true,
 							functionTypeParameters = true,
 							parameterNames = true,
 							rangeVariableTypes = true,
 						},
-						analyses = {
-							fieldalignment = true,
-							nilness = true,
-							unusedparams = true,
-							unusedwrite = true,
-							useany = true,
-						},
-						usePlaceholders = true,
-						completeUnimported = true,
+						semanticTokens = false,
 						staticcheck = true,
-						directoryFilters = {
-							"-.git",
-							"-.vscode",
-							"-.idea",
-							"-.vscode-test",
-							"-node_modules",
-						},
-						semanticTokens = true,
+						gofumpt = true,
 					},
 				},
-				on_attach = gopls_on_attach,
 			})
 			-- Python LSP
 			lspconfig.pyright.setup({
@@ -187,7 +155,7 @@ return {
 			local ruff_on_attach = function(client, _)
 				client.server_capabilities.hoverProvider = false
 			end
-			lspconfig.ruff_lsp.setup({
+			lspconfig.ruff.setup({
 				on_attach = ruff_on_attach,
 			})
 			-- TOML LSP
@@ -212,7 +180,11 @@ return {
 				on_attach = function(_, bufnr)
 					vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 				end,
+				bundle_path = "~/.local/share/nvim/mason/packages/powershell-editor-services",
 				settings = { powershell = { codeFormatting = { Preset = "OTBS" } } },
+				init_options = {
+					enableProfileLoading = false,
+				},
 			})
 			-- Global Keymaps
 			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
