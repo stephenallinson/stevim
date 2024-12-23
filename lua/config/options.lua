@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
 -- Set shell
-vim.opt.shell = "/bin/sh"
+vim.opt.shell = "/usr/bin/fish"
 
 -- Tab Stop
 vim.opt.tabstop = 4
