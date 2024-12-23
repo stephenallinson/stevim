@@ -52,10 +52,10 @@ return {
 				code = {
 					enabled = true,
 					sign = false,
-					width = "block",
+					width = "full",
 					min_width = 80,
-					left_pad = 2,
-					right_pad = 4,
+					left_pad = 0,
+					right_pad = 0,
 				},
 				pipe_table = {
 					preset = "heavy",
