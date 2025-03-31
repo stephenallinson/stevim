@@ -3,11 +3,20 @@ return {
 	priority = 1000,
 	lazy = false,
 	opts = {
-		bigfile = { enabled = true },
+		bigfile = { enabled = true, notify = true },
 		lazygit = { enabled = true },
 		quickfile = { enabled = true },
 		terminal = { enabled = false },
 		zen = { enabled = false },
+		image = {
+			enabled = true,
+			doc = {
+				inline = false,
+				float = true,
+				max_width = 60,
+				max_height = 30,
+			},
+		}, -- This requires ImageMagick
 	},
 	keys = {
 		{
