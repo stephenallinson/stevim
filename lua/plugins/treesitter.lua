@@ -28,6 +28,15 @@ return {
 			indent = { enable = true },
 			sync_install = false,
 			ignore_install = {},
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<Enter>",
+					node_incremental = "<Enter>",
+					scope_incremental = false,
+					node_decremental = "<C-Enter>",
+				},
+			},
 		})
 
 		local treesitter_parser_config = require("nvim-treesitter.parsers").get_parser_configs()
