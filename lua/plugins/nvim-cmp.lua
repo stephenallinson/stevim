@@ -1,3 +1,5 @@
+local trigger_text = ";"
+
 return {
 	{
 		"saghen/blink.cmp",
@@ -17,21 +19,64 @@ return {
 		},
 		version = "*",
 		opts = {
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "default",
+				["<Tab>"] = { "snippet_forward", "fallback" },
+				["<S-Tab>"] = { "snippet_backward", "fallback" },
+
+				["<Up>"] = { "select_prev", "fallback" },
+				["<Down>"] = { "select_next", "fallback" },
+				["<C-p>"] = { "select_prev", "fallback" },
+				["<C-n>"] = { "select_next", "fallback" },
+
+				["<S-k>"] = { "scroll_documentation_up", "fallback" },
+				["<S-j>"] = { "scroll_documentation_down", "fallback" },
+
+				["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+				["<C-e>"] = { "hide", "fallback" },
+			},
 			appearance = { use_nvim_cmp_as_default = true },
 			sources = {
 				default = {
 					"lsp",
-					"codeium",
 					"path",
 					"snippets",
 					"buffer",
 				},
 				providers = {
-					codeium = {
-						name = "codeium",
-						module = "blink.compat.source",
-						score_offset = 3,
+					snippets = {
+						name = "snippets",
+						enabled = true,
+						max_items = 10,
+						min_keyword_length = 2,
+						module = "blink.cmp.sources.snippets",
+						-- Configure so that trigger text does not appear in snipper reveal
+						should_show_items = function()
+							local col = vim.api.nvim_win_get_cursor(0)[2]
+							local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+							return before_cursor:match(trigger_text .. "%w*$") ~= nil
+						end,
+						transform_items = function(_, items)
+							local col = vim.api.nvim_win_get_cursor(0)[2]
+							local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+							local trigger_pos = before_cursor:find(trigger_text .. "[^" .. "]*$")
+							if trigger_pos then
+								for _, item in ipairs(items) do
+									if not item.trigger_text_modified then
+										---@diagnostic disable-next-line: inject-field
+										item.trigger_text_modified = true
+										item.textEdit = {
+											newText = item.insertText or item.label,
+											range = {
+												start = { line = vim.fn.line(".") - 1, character = trigger_pos - 1 },
+												["end"] = { line = vim.fn.line(".") - 1, character = col },
+											},
+										}
+									end
+								end
+							end
+							return items
+						end,
 					},
 				},
 			},
