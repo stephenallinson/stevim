@@ -27,29 +27,6 @@ return {
 				},
 			},
 			lualine_x = {
-				{
-					"copilot",
-					symbols = {
-						status = {
-							icons = {
-								enabled = " ",
-								sleep = " ", -- auto-trigger disabled
-								disabled = " ",
-								warning = " ",
-								unknown = " ",
-							},
-							hl = {
-								enabled = "#879A39",
-								sleep = "#4385BE",
-								disabled = "#878580",
-								warning = "#DA702C",
-								unknown = "#D14D41",
-							},
-						},
-					},
-					show_colors = true,
-					show_loading = false,
-				},
 				"encoding",
 				"fileformat",
 				"filetype",
