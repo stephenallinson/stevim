@@ -17,7 +17,7 @@ return {
 				},
 			},
 		},
-		version = "*",
+		version = "1.*",
 		opts = {
 			keymap = {
 				preset = "default",
@@ -89,6 +89,7 @@ return {
 				enabled = true,
 				window = { border = "rounded" },
 			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 	},
 	-- {
