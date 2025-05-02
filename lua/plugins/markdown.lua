@@ -36,7 +36,7 @@ return {
 					width = "block",
 					min_width = 80,
 					sign = false,
-					icons = { "󰝤" },
+					icons = { "󰝤 " },
 				},
 				bullet = {
 					highlight = "RenderMarkdownError",
